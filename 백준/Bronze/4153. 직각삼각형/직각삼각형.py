@@ -1,16 +1,14 @@
-
 while(1):
-  a, b, c=map(int, input().split())
-  abc = [a,b,c]
-  if(abc == [0,0,0]):
+  edges = list(map(int, input().split()))
+  if(edges == [0,0,0]):
     break
   else:
-    Max = max(abc)
-    abc.remove(Max)
+    max_edge = max(edges)
+    edges.remove(max_edge)
     sum = 0
     for i in range(2):
-      sum += abc[i]**2
-    if(Max**2==sum):
+      sum += edges[i]**2
+    if(max_edge**2==sum):
       print("right")
     else:
       print("wrong")
