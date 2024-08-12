@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 31120 KB, 시간: 72 ms
+메모리: 31120 KB, 시간: 68 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2024년 8월 13일 00:02:36
+2024년 8월 13일 00:16:44
 
 ### 문제 설명
 
@@ -30,7 +30,7 @@
 
 <p>예를 들어 <em>N</em>=5일 때, 다음과 같이 선생님 및 학생의 위치 정보가 주어졌다고 가정하자.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 300px; width: 340px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/1c939daa-993c-43e7-8cdc-579d65bef994/-/preview/" style="height: 300px; width: 340px;"></p>
 
 <p>이 때 다음과 같이 3개의 장애물을 설치하면, 모든 학생들을 선생님의 감시로부터 피하도록 만들 수 있다.</p>
 
