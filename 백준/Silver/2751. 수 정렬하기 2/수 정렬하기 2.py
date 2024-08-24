@@ -5,5 +5,4 @@ arr = [int(sys.stdin.readline()) for _ in range(N)]
 
 arr.sort()
 
-for x in arr:
-    print(x)
+print(*arr, sep="\n")
