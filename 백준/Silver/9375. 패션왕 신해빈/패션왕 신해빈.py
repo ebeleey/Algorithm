@@ -13,11 +13,8 @@ for _ in range(T):
 
     lst = list(dict.values())
 
-    if n > 0:
-        result = lst[0] + 1
-        for i in range(1, len(lst)):
-            result = result * (lst[i] + 1)
+    result = 1
+    for item in lst:
+        result *= item + 1
 
-        print(result - 1)
-    else:
-        print(0)
+    print(result - 1)
