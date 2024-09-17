@@ -1,7 +1,5 @@
 # 2887 행성 터널
-
 from heapq import heappush, heappop
-from copy import deepcopy
 
 N = int(input()) # 행성의 개수 N
 
@@ -35,9 +33,9 @@ for i in range(N):
     planets.append((x, y, z, i)) # 행성의 x, y, z 좌표 + 행성 인덱스
 
 # x, y, z 좌표 기준으로 정렬
-planets_x = sorted(deepcopy(planets), key=lambda x: x[0])
-planets_y = sorted(deepcopy(planets), key=lambda x: x[1])
-planets_z = sorted(deepcopy(planets), key=lambda x: x[2])
+planets_x = sorted(planets, key=lambda x: x[0])
+planets_y = sorted(planets, key=lambda x: x[1])
+planets_z = sorted(planets, key=lambda x: x[2])
 
 graph = [[] for _ in range(N)]
 for i in range(N-1):
