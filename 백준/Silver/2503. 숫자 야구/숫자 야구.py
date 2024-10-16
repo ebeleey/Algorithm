@@ -15,7 +15,6 @@ for _ in range(N):
         strike_cnt = 0
         ball_cnt = 0
 
-        # 스트라이크와 볼을 계산
         for i in range(3):
             if case[i] == q[i]: # 스트라이크
                 strike_cnt += 1  
