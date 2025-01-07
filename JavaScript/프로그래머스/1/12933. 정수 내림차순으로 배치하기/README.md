@@ -43,3 +43,30 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+
+## 참고할 다른 사람 코드
+
+```js
+function solution(n) {
+  const newN = n + "";  // 숫자 n을 문자열로 변환
+  const newArr = newN
+    .split("")   // 문자열을 문자 배열로 변환
+    .sort()      // 문자를 오름차순으로 정렬
+    .reverse()   // 내림차순으로 정렬 (내림차순은 숫자 크기 순서로 정렬됨)
+    .join("");   // 배열을 다시 문자열로 결합
+
+  return +newArr;  // 문자열을 숫자로 변환하여 반환
+}
+```
+
+### Javascript에서 숫자를 문자열로 변환
+```js
+nums + ""
+```
+
+### Javascript에서 문자열을 숫자로 변환
+```js
++chars
+```
