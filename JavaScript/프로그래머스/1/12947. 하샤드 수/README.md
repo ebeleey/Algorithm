@@ -73,3 +73,41 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+
+## `reduce()` 사용법
+```js
+  arr.reduce(callback[, initialValue])
+```
+
+- `callback`: 배열의 각 요소에 대해 실행할 함수
+  - `accumulator`: 콜백 함수의 반환값을 누적하는 변수 
+  - `currentValue` : 현재 처리 중인 배열 요소
+  - `currentIndex` : 현재 처리 중인 배열 요소의 인덱스(optional)
+  - `array` : `reduce()`가 호출된 배열(optional)
+- `initialValue`: 콜백 함수의 최초 호출에 제공할 초기값
+
+> 콜백의 최초 호출 때 `accumulator`와 `currentValue`는 다음 두 가지 값 중 하나를 가질 수 있습니다. 만약 `reduce()` 함수 호출에서 `initialValue`를 제공한 경우, `accumulator`는 `initialValue`와 같고 `currentValue`는 배열의 첫 번째 값과 같습니다. `initialValue`를 제공하지 않았다면, `accumulator`는 배열의 첫 번째 값과 같고 `currentValue`는 두 번째와 같습니다.
+
+## 초기값 0을 설정하지 않았을 때 정답이 아니었던 이유??
+
+### 초기값이 없을 때
+```js
+String(x).split('').reduce((acc, cur) => acc + Number(cur))
+```
+
+- `x`가 `18`이면 `String(x).split('')을 수행한 배열은 `['1', '8']`
+- `initialValue`를 제공하지 않으면 배열의 첫 번째 값이 초기값이 됨.
+- 첫 번째 연산은 `acc`이 `'1'`이고 `cur`은 `'8'`이 되어서 `'1' + Number('8')`이 수행되어 `'18'`이 됨.
+
+자릿수 합 계산이 이루어지지 않음.
+
+### 초기값을 0으로 설정했을 때
+```js
+String(x).split('').reduce((acc, cur) => acc + Number(cur), 0)
+```
+1. `acc=0`, `cur='1'` -> `acc+Number(cur)` = `0+1` = `1`
+2. `acc=1`, `cur='8'` -> `acc+Number(cur)` = `1+8` = `9`
+
+자릿수 합 계산이 제대로 이루어진다!!
