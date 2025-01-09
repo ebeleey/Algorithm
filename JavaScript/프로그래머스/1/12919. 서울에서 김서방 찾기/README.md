@@ -45,3 +45,10 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+## 다른 사람 코드
+```js
+function solution(seoul) {
+    return `김서방은 ${seoul.indexOf('Kim')}에 있다`
+}
+```
