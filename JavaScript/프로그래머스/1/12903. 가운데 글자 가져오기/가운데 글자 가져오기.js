@@ -1,7 +1,10 @@
 function solution(s) {
-    if (s.length % 2) {
-        return s.slice(Math.floor(s.length/2), Math.floor(s.length/2)+1)
+    const length = s.length 
+    const middle = Math.floor(s.length / 2);
+    
+    if (length % 2 === 0) {
+        return s.slice(middle - 1, middle + 1);
     } else {
-        return s.slice(Math.floor(s.length/2)-1, Math.floor(s.length/2)+1)
+        return s[middle];
     }
 }
