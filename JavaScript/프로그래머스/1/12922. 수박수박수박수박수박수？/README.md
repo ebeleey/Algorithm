@@ -47,3 +47,19 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+
+## 다른 사람의 코드
+
+```js
+function waterMelon(n){
+  // n을 2로나눈 몫 만큼 곱하고 나머지가 있으면 '수' 더해라.
+  return ("수박").repeat(n/2) + ((n%2) ? '수' : '');
+}
+```
+
+### `repeat()` 문자열 반복 함수
+```js
+str="abc";
+strRepeat=str.repeat(5);	//'abcabcabcabcabc'
+```
