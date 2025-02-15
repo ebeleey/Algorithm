@@ -1,74 +1,65 @@
 const fs = require("fs");
-const filePath = process.platform === "linux" ? "/dev/stdin" : "input.txt";
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./14500.txt";
+
 const input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-const [n, m] = input.shift().split(" ").map(Number);
-const arr = input.map(i => i.split(" ").map(Number));
-const visited = Array.from({ length: n }, () =>
-  Array.from({ length: m }, () => 0)
-);
-const dx = [0, 0, 1, -1];
-const dy = [1, -1, 0, 0];
-const ddx = [
-  [0, 0, 0, 1],
-  [0, 1, 2, 1],
-  [0, 0, 0, -1],
-  [0, -1, 0, 1],
-];
-const ddy = [
-  [0, 1, 2, 1],
-  [0, 0, 0, 1],
-  [0, 1, 2, 1],
-  [0, 1, 1, 1],
-];
-let ans = 0;
+const [N, M] = input[0].split(" ").map(Number)
 
-const dfs = (x, y, sum, cnt) => {
-  if (cnt === 4) {
-    ans = Math.max(ans, sum);
-    return;
-  }
-  for (let i = 0; i < 4; i++) {
-    let [nx, ny] = [x + dx[i], y + dy[i]];
-    if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-
-    if (!visited[nx][ny]) {
-      visited[nx][ny] = true;
-      dfs(nx, ny, sum + arr[nx][ny], cnt + 1);
-      visited[nx][ny] = false;
-    }
-  }
-};
-
-const checkNoDfs = (x, y) => {
-  for (let i = 0; i < 4; i++) {
-    let flag = false;
-    let sum = 0;
-
-    for (let j = 0; j < 4; j++) {
-      let nx = x + ddx[i][j];
-      let ny = y + ddy[i][j];
-
-      if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
-        flag = true;
-        break;
-      } else {
-        sum += arr[nx][ny];
-      }
-    }
-    if (!flag) {
-      ans = Math.max(ans, sum);
-    }
-  }
-};
-
-for (let i = 0; i < n; i++) {
-  for (let j = 0; j < m; j++) {
-    visited[i][j] = true;
-    dfs(i, j, arr[i][j], 1);
-    visited[i][j] = false;
-    checkNoDfs(i, j);
-  }
+const arr = [];
+for (let i = 1; i <= N; i++) {
+  arr.push(input[i].split(" ").map(Number));
 }
 
-console.log(ans);
+dir = [
+  [[0, 0, 0, 0], [0, 1, 2, 3], 1, 4],
+  [[0, 1, 2, 3], [0, 0, 0, 0], 4, 1],
+
+  [[0, 0, 1, 1], [0, 1, 0, 1], 2, 2],
+
+  [[0, 1, 2, 2], [0, 0, 0, 1], 3, 2],
+  [[1, 1, 1, 0], [0, 1, 2, 2], 2, 3],
+  [[0, 0, 1, 2], [0, 1, 1, 1], 3, 2],
+  [[0, 0, 0, 1], [0, 1, 2, 0], 2, 3],
+  [[0, 1, 2, 2], [1, 1, 1, 0], 3, 2],
+  [[0, 0, 0, 1], [0, 1, 2, 2], 2, 3],
+  [[0, 0, 1, 2], [0, 1, 0, 0], 3, 2],
+  [[0, 1, 1, 1], [0, 0, 1, 2], 2, 3],
+
+  [[0, 1, 1, 2], [0, 0, 1, 1], 3, 2],
+  [[1, 1, 0, 0], [0, 1, 1, 2], 2, 3],
+  [[0, 1, 1, 2], [1, 1, 0, 0], 3, 2],
+  [[0, 0, 1, 1], [0, 1, 1, 2], 2, 3],
+
+  [[0, 0, 0, 1], [0, 1, 2, 1], 2, 3],
+  [[0, 1, 1, 2], [0, 0, 1, 0], 3, 2],
+  [[0, 1, 1, 2], [1, 0, 1, 1], 3, 2],
+  [[0, 1, 1, 1], [1, 0, 1, 2], 2, 3],
+]
+
+let ans = 0;
+
+function check(x, ans) {
+  const di = dir[x][0]
+  const dj = dir[x][1]
+
+  const n = dir[x][2]
+  const m = dir[x][3]
+
+  for (let i = 0; i <= N - n; i++) {
+    for (let j = 0; j <= M - m; j++) {
+      let temp = 0;
+      for (let k = 0; k < 4; k++) {
+        temp += arr[i + di[k]][j + dj[k]]
+      }
+      ans = Math.max(ans, temp);
+    }
+  }
+  return ans
+}
+
+for (let x = 0; x < dir.length; x++) {
+  ans = check(x, ans)
+}
+
+console.log(ans)
+
