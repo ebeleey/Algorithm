@@ -28,3 +28,12 @@
 
  <p>첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.</p>
 
+---
+
+## [repeat()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)
+
+```js
+str.repeat(count);
+```
+`repeat()` 메서드는 문자열을 주어진 횟수만큼 반복해 붙인 새로운 문자열을 반환합니다.
+
