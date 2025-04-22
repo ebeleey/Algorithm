@@ -9,8 +9,6 @@ dp[0] = 1
 
 for value in values:
     for current in range(value, k+1):
-        if (current - value < 0):
-            break
         dp[current] += dp[current-value]
 
 print(dp[k])
