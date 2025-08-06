@@ -19,11 +19,8 @@ N = int(input()) # 정점의 개수
 graph = [[] for _ in range(N)]
 
 for i in range(N):
-    nodes = list(map(int, input().split()))
-    
-    for j in range(N):
-        if nodes[j]:
-            graph[i].append(j)
+    row = list(map(int, input().split()))
+    graph[i] = [j for j in range(N) if row[j] == 1]
 
 for i in range(N):
     result = bfs(i)
